@@ -11,7 +11,7 @@ description: >-
 
 用户在整理 **单个知识域或多个子知识点** 时，默认按本 Skill 产出 Markdown 笔记：**同一套三块镜子，全文一致。**
 
-**分发与安装**（发到 Git / 给其他 Agent 用时）：见同级 [README.md](README.md)。
+**如何将本 Skill 装进 Cursor / Claude Code**：见同级 [README.md](README.md)。
 
 ---
 

@@ -41,17 +41,39 @@ ai-pm-knowledge-notes/
 
 ## 推送到 GitHub（首次）
 
-在已 `git clone` 本仓库的机器上无需再做；若你在本地初始化：
+在已 `git clone` 本仓库的机器上无需再做；本地从零发布可二选一。
 
-1. 在 GitHub 网页 **New repository**，名称建议 `ai-pm-knowledge-notes`，**不要**勾选「Add README」（避免与本地冲突）。
-2. 本地执行：
+### 方式 A：`gh` 一条命令（建库 + 推送）
 
 ```bash
-cd /path/to/ai-pm-knowledge-notes
-git remote add origin https://github.com/<你的用户名>/ai-pm-knowledge-notes.git
-git branch -M main
+brew install gh   # 尚未安装时
+gh auth login     # 浏览器完成登录
+cd ~/ai-pm-knowledge-notes
+# 若已配置过 origin 且与目标一致，可直接 push；否则见方式 B
 git push -u origin main
 ```
+
+或直接让 `gh` 建库并推送（若本地 **没有** origin 时更干净）：
+
+```bash
+cd ~/ai-pm-knowledge-notes
+git remote remove origin 2>/dev/null || true
+gh repo create ai-pm-knowledge-notes --public --source=. --push
+```
+
+### 方式 B：网页建空库 + `git push`
+
+1. 打开 [New repository](https://github.com/new)，名称填 **`ai-pm-knowledge-notes`**，**不要**勾选 README / .gitignore / license。  
+2. 确认本地已：`git remote add origin https://github.com/<用户名>/ai-pm-knowledge-notes.git`  
+3. `git push -u origin main`（HTTPS 首次会走系统凭据或浏览器登录）。
+
+---
+
+**维护者 [@jiangji01](https://github.com/jiangji01) 机器上**：仓库目录 `~/ai-pm-knowledge-notes` 已预设
+
+`origin = https://github.com/jiangji01/ai-pm-knowledge-notes.git`
+
+在网页创建 **同名空仓库** 后，于本机终端执行 `git push -u origin main` 即可完成闭环（CI/沙箱环境无法代你输入账号，需在你自己的终端完成一次认证）。
 
 ## 许可证
 
